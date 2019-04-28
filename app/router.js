@@ -81,7 +81,7 @@ const Root = createSwitchNavigator(
     }
   },
   {
-    initialRouteName: "signIn"
+    initialRouteName: signIn ? "SignedIn" : "SignedOut"
   }
 );
 

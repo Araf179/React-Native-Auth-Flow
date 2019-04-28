@@ -1,11 +1,21 @@
-import React from "react";
+import React, { Component }  from "react";
 import { View } from "react-native";
 import { Card, Button, FormLabel, FormInput } from "react-native-elements";
 import { onSignIn } from "../auth";
 
-export default ({ navigation }) => (
-  <View style={{ paddingVertical: 20 }}>
-    
+export default class SignUp extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      confirmpassword: ''
+    };
+  }
+  render(){
+  const { navigation } = this.props;
+  return(
+  <View style={{ paddingVertical: 20 }}>  
     <Card>
       <FormLabel>Email</FormLabel>
       <FormInput placeholder="Email address..." />
@@ -19,7 +29,7 @@ export default ({ navigation }) => (
         backgroundColor="#03A9F4"
         title="SIGN UP"
         onPress={() => {
-          onSignIn().then(() => navigation.navigate("SignedIn"));
+          onSignIn(navigation);
         }}
       />
       <Button
@@ -31,4 +41,6 @@ export default ({ navigation }) => (
       />
     </Card>
   </View>
-);
+    )
+  }
+}
